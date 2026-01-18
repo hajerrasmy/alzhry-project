@@ -1,0 +1,81 @@
+.contact_info_section {
+  width: 100%;
+  padding: 80px 25px;
+  background: var(--bg-alt);
+  text-align: center;
+  position: relative;
+}
+
+.contact_info_container {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+  align-items: stretch;
+}
+
+/* بطاقات التواصل */
+.contact_card {
+  background: var(--bg);
+  padding: 30px 20px;
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact_card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 25px 60px rgba(0,0,0,0.2);
+}
+
+.contact_icon {
+  font-size: 40px;
+  color: var(--primary);
+  margin-bottom: 15px;
+}
+
+.contact_card_title {
+  font-size: 22px;
+  font-weight: 800;
+  margin-bottom: 10px;
+  color: var(--text);
+}
+
+.contact_card_text {
+  font-size: 17px;
+  color: var(--secondary-text);
+  line-height: 1.6;
+}
+
+/* ==========================
+  Animations
+========================== */
+.fade_in_up {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 0.8s forwards ease;
+}
+
+.fade_in_up:nth-child(1) { animation-delay: 0.2s; }
+.fade_in_up:nth-child(2) { animation-delay: 0.4s; }
+.fade_in_up:nth-child(3) { animation-delay: 0.6s; }
+
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media(max-width:900px){
+  .contact_info_section {
+    padding: 60px 15px;
+  }
+
+  .contact_card_title {
+    font-size: 20px;
+  }
+
+  .contact_card_text {
+    font-size: 16px;
+  }
+}

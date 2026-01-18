@@ -1,0 +1,211 @@
+/* ---------- NAVBAR ---------- */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: var(--nav-bg);
+  z-index: 10000;
+  direction: rtl;
+  transition: all .4s ease;
+  box-shadow: 0 3px 20px var(--nav-shadow);
+  backdrop-filter: blur(8px);
+}
+
+.navbar .container {
+  max-width: 1280px;
+  margin: auto;
+  padding: 15px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo */
+.logo {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--nav-text);
+  letter-spacing: 1px;
+  transition: transform .3s ease, color .3s ease;
+}
+.logo:hover {
+  transform: scale(1.05);
+  color: var(--nav-hover);
+}
+
+/* Links */
+.nav_links {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  font-weight: 500;
+}
+
+.nav_links a {
+  font-size: 16px;
+  color: var(--nav-link);
+  text-decoration: none;
+  position: relative;
+  transition: all .3s ease;
+}
+
+.nav_links a::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  right: 0;
+  width: 0%;
+  height: 3px;
+  background: linear-gradient(90deg,var(--primary), #7aa2ff);
+  border-radius: 2px;
+  transition: width .4s ease;
+}
+
+.nav_links a:hover::after {
+  width: 100%;
+}
+
+.nav_links a:hover {
+  color: var(--nav-hover);
+  transform: scale(1.05);
+}
+
+/* ---------- MENU BUTTON ---------- */
+.menu_btn {
+  font-size: 32px;
+  border: none;
+  background: none;
+  display: none;
+  cursor: pointer;
+  color: var(--nav-text);
+  transition: transform .3s ease, color .3s ease;
+}
+.menu_btn:hover {
+  transform: scale(1.2);
+  color: var(--nav-hover);
+}
+
+/* ---------- DROPDOWN ---------- */
+.nav_item_dropdown {
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.nav_item_dropdown span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 16px;
+  color: var(--nav-link);
+  transition: all .3s ease;
+}
+
+.nav_item_dropdown span:hover {
+  color: var(--nav-hover);
+}
+
+/* تحريك السهم عند الفتح */
+.rotate {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease;
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: var(--nav-bg);
+  display: flex;
+  flex-direction: column;
+  min-width: 250px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  overflow: hidden;
+  z-index: 1000;
+
+  opacity: 0;
+  transform: translateY(-15px);
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.dropdown.active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.dropdown a {
+  padding: 12px 20px;
+  font-size: 15px;
+  color: var(--nav-link);
+  text-decoration: none;
+  border-bottom: 1px solid #eee;
+  transition: all 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  border-radius: 8px;
+}
+.dropdown a:hover {
+  background: linear-gradient(90deg, var(--primary), #7aa2ff);
+  color: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+/* ===== Responsive / Sidebar on Mobile ===== */
+@media(max-width:900px){
+  .menu_btn { display: block; }
+
+  .nav_links {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: -300px;
+    height: 100vh;
+    width: 280px;
+    flex-direction: column;
+    background: var(--mobile-bg);
+    padding: 60px 20px;
+    gap: 20px;
+    box-shadow: -5px 0 20px rgba(0,0,0,.1);
+    transition: all .4s ease;
+    z-index: 9999;
+    border-radius: 10px 0 0 10px;
+  }
+
+  .nav_links.active {
+    right: 0;
+    display: flex;
+    animation: slideSidebar 0.4s ease forwards;
+  }
+
+  .nav_links a {
+    font-size: 18px;
+    text-align: right;
+  }
+
+  @keyframes slideSidebar {
+    0% { right: -300px; opacity: 0; }
+    100% { right: 0; opacity: 1; }
+  }
+
+  .nav_item_dropdown .dropdown {
+    position: relative;
+    top: 0;
+    right: 0;
+    box-shadow: none;
+    border-radius: 0;
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .dropdown a {
+    border-bottom: 1px solid #ccc;
+    border-radius: 0;
+    padding: 12px 15px;
+  }
+}
