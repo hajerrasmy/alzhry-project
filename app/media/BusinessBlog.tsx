@@ -27,25 +27,27 @@ export default function CreativeCards() {
   const cardsRef = useRef<HTMLDivElement[]>([]);
 
   useEffect(() => {
-    // نفلتر العناصر للتأكد أنها موجودة
     const validCards = cardsRef.current.filter((el) => el);
 
     validCards.forEach((card) => {
-      gsap.from(card, {
-        y: 50,
-        opacity: 0,
-        scale: 0.95,
-        duration: 0.8,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: card,
-          start: "top 85%",
-          toggleActions: "play none none reverse",
-        },
-      });
+      gsap.fromTo(
+        card,
+        { y: 30, opacity: 0, scale: 0.97 },
+        {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 0.6,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: card,
+            start: "top 90%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
     });
 
-    // تنظيف ScrollTrigger عند unmount
     return () => {
       ScrollTrigger.getAll().forEach((st) => st.kill());
     };

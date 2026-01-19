@@ -1,6 +1,6 @@
 .aboutgroup_area {
   width: 100%;
-  padding: 100px 100px;
+  padding: 80px 20px; /* تقليل البادينج للجوال */
   background: var(--bg);
   direction: rtl;
   position: relative;
@@ -12,23 +12,24 @@
   max-width: 1000px;
   margin: auto;
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 40px; /* تقليل المسافة */
 }
 
 .aboutgroup_title {
-  font-size: 36px;
+  font-size: 30px; /* تصغير العنوان */
   font-weight: 900;
   color: var(--text);
   position: relative;
   display: inline-block;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 /* الخط المتحرك تحت العنوان */
 .aboutgroup_title::after {
   content: "";
   position: absolute;
-  right: 0;
+  left: 50%; /* في المنتصف */
+  transform: translateX(-50%);
   bottom: -6px;
   width: 0;
   height: 4px;
@@ -44,9 +45,10 @@
 }
 
 .aboutgroup_sub {
-  font-size: 18px;
+  font-size: 16px; /* تصغير النص */
   color: var(--secondary-text);
-  line-height: 1.8;
+  line-height: 1.6;
+  margin-bottom: 30px;
 }
 
 /* Dynamic List */
@@ -56,53 +58,53 @@
   list-style: none;
   padding: 0;
   display: grid;
-  gap: 18px;
+  gap: 15px; /* تقليل الفراغ بين العناصر */
 }
 
 .aboutgroup_list li {
   background: var(--card);
-  padding: 18px 22px;
+  padding: 15px 18px; /* تصغير البادينج */
   border-radius: 15px;
   border: 1px solid rgba(255,255,255,.12);
-  box-shadow: 0 12px 28px rgba(0,0,0,.12);
-  font-size: 16px;
+  box-shadow: 0 10px 20px rgba(0,0,0,.12);
+  font-size: 14px; /* تصغير الخط */
   color: var(--text);
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   position: relative;
   overflow: hidden;
-  transform: translateY(20px);
+  transform: translateY(15px);
   opacity: 0;
   animation: fadeShow 0.7s forwards ease;
 }
 
 .aboutgroup_list li:hover {
-  transform: translateX(-8px);
+  transform: translateX(-6px);
   border-color: var(--primary);
 }
 
 /* أيقونة النسر داخل النقطة */
 .aboutgroup_list li .icon {
-  font-size: 20px;
+  font-size: 18px; /* تصغير الأيقونة */
   display: inline-block;
   transform-origin: bottom center;
   animation: flapContinuous 2s ease-in-out infinite;
 }
 
-/* تأخير بسيط لكل نقطة لتكون حركة متتابعة */
+/* Responsive delays */
 .aboutgroup_list li:nth-child(1) .icon { animation-delay: 0s; }
-.aboutgroup_list li:nth-child(2) .icon { animation-delay: 0.3s; }
-.aboutgroup_list li:nth-child(3) .icon { animation-delay: 0.6s; }
-.aboutgroup_list li:nth-child(4) .icon { animation-delay: 0.9s; }
-.aboutgroup_list li:nth-child(5) .icon { animation-delay: 1.2s; }
-.aboutgroup_list li:nth-child(6) .icon { animation-delay: 1.5s; }
+.aboutgroup_list li:nth-child(2) .icon { animation-delay: 0.2s; }
+.aboutgroup_list li:nth-child(3) .icon { animation-delay: 0.4s; }
+.aboutgroup_list li:nth-child(4) .icon { animation-delay: 0.6s; }
+.aboutgroup_list li:nth-child(5) .icon { animation-delay: 0.8s; }
+.aboutgroup_list li:nth-child(6) .icon { animation-delay: 1s; }
 
 @keyframes flapContinuous {
   0% { transform: rotate(0deg) translateY(0); }
-  25% { transform: rotate(-12deg) translateY(-4px); }
-  50% { transform: rotate(0deg) translateY(-6px); }
-  75% { transform: rotate(12deg) translateY(-4px); }
+  25% { transform: rotate(-12deg) translateY(-3px); }
+  50% { transform: rotate(0deg) translateY(-4px); }
+  75% { transform: rotate(12deg) translateY(-3px); }
   100% { transform: rotate(0deg) translateY(0); }
 }
 
@@ -119,12 +121,12 @@
   animation: lineGrow 1.2s forwards;
 }
 
-.aboutgroup_list li:nth-child(1)::after { animation-delay: .3s; }
-.aboutgroup_list li:nth-child(2)::after { animation-delay: .5s; }
-.aboutgroup_list li:nth-child(3)::after { animation-delay: .7s; }
-.aboutgroup_list li:nth-child(4)::after { animation-delay: .9s; }
-.aboutgroup_list li:nth-child(5)::after { animation-delay: 1.1s; }
-.aboutgroup_list li:nth-child(6)::after { animation-delay: 1.3s; }
+.aboutgroup_list li:nth-child(1)::after { animation-delay: .2s; }
+.aboutgroup_list li:nth-child(2)::after { animation-delay: .4s; }
+.aboutgroup_list li:nth-child(3)::after { animation-delay: .6s; }
+.aboutgroup_list li:nth-child(4)::after { animation-delay: .8s; }
+.aboutgroup_list li:nth-child(5)::after { animation-delay: 1s; }
+.aboutgroup_list li:nth-child(6)::after { animation-delay: 1.2s; }
 
 @keyframes fadeShow {
   to { opacity: 1; transform: translateY(0); }
@@ -143,6 +145,17 @@
 
   .aboutgroup_list li {
     justify-content: center;
-    text-align: right;
+    text-align: center; /* لكل العنصر */
+    flex-direction: column; /* أيقونة فوق النص */
+    gap: 8px;
+  }
+
+  .aboutgroup_list li .icon {
+    font-size: 20px;
+  }
+
+  .aboutgroup_list li {
+    font-size: 14px;
+    padding: 12px 15px;
   }
 }

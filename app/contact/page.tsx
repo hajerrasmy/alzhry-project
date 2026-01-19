@@ -4,6 +4,7 @@ import ContactCards from '../Home/contactCard'
 import ContactMap from './ContactMap'
 import ContactInfoSection from './ContactInfoSection'
 import ContactSection from './contactSection'
+import AboutGroup from '../group/AboutGroup'
 
 function page() {
   return (
@@ -11,7 +12,8 @@ function page() {
         <ContactPage/>
         <ContactSection/>
         <ContactMap/>
-        <ContactInfoSection/>
+          <ContactCards/>
+     
      
         
     </div>

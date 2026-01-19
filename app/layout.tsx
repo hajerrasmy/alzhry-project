@@ -6,6 +6,9 @@ import "../styles/main.css";
 import "../styles/navbar.css";
 import "../styles/section.css";
 import "../styles/ceo.css";
+import "../styles/home/aboutus.css"
+import "../styles/home/working.css"
+import "../styles/home/logo.css"
 import "../styles/aboutCeo.css";
 import "../styles/aboutCeoFinal.css"
 import "../styles/BranchesSection.css";
@@ -19,6 +22,7 @@ import "../styles/careers/HiringHero.css"
 import "../styles/contact/contacthero.css"
 import "../styles/contact/contactmap.css"
 import "../styles/contact/contactInfo.css"
+import "../styles/contact/contactSection.css"
 import "../styles/branch/Branches.css"
 import "../styles/branch/hero.css"
 import "../styles/branch/branchContent.css"

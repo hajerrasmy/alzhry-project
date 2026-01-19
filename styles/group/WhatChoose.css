@@ -1,26 +1,26 @@
 .choose_us_section{
   padding:100px 100px;
   background: var(--bg);
-   text-align: center;
+  text-align: center;
 }
+
+/* العنوان */
 .choose_us_title{
- 
- 
   font-size:36px;
   font-weight:900;
   color:var(--text);
   position:relative;
   display:inline-block;
   margin-bottom:50px;
-  
 }
 
 /* الخط المتحرك تحت العنوان */
 .choose_us_title::after{
   content:"";
   position:absolute;
-  left:0;
+  left:50%;                 /* في الوسط */
   bottom:-8px;
+  transform: translateX(-50%); /* نحركه نصف عرضه لليسار ليصبح مركزي */
   height:4px;
   width:0%;
   background: linear-gradient(90deg,#3a7bd5);
@@ -104,17 +104,24 @@
   to{ opacity:1; transform:translateY(0); }
 }
 
-/* Responsive */
+/* ======== Responsive ======== */
 @media(max-width:900px){
+  .choose_us_section{
+    padding:60px 20px; /* أقل البادينج للموبايل */
+  }
+
   .choose_us_title{
-    text-align:center;
+    font-size:28px;
+    text-align:center; /* العنوان في الوسط */
   }
 
   .tab_header{
-    justify-content:center;
+    justify-content:center; /* تبسيط للعرض الصغير */
+    font-size:18px;
   }
 
   .tab_content.open{
-    text-align:right;
+    text-align:right; /* محتوى التاب يبقى على اليمين */
+    padding:12px 18px;
   }
 }

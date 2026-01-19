@@ -59,3 +59,44 @@
 
 
 
+@media (max-width: 1024px) {
+  .hero_main {
+
+    .content {
+      top: 35%;
+      max-width: 90%;
+      gap: 1.2rem;
+
+      h1 {
+        font-size: 2.2rem;
+        padding-top: 60px;
+      }
+
+      p {
+        font-size: 1.2rem;
+        max-width: 480px;
+      }
+    }
+  }
+}
+@media (max-width: 1024px) {
+  .hero_main {
+
+    .content {
+      top: 35%;
+      max-width: 90%;
+      gap: 1.2rem;
+
+      h1 {
+        font-size: 2.2rem;
+        padding-top: 60px;
+      }
+
+      p {
+        font-size: 1.2rem;
+        max-width: 480px;
+      }
+    }
+  }
+}
+

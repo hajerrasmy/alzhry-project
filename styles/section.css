@@ -205,6 +205,11 @@ section_content{
 }
 /* -------- RESPONSIVE -------- */
 @media(max-width:900px){
+    /* إخفاء الصور بالكامل في الموبايل */
+  .section_image{
+    display: none;
+  }
+
   .section_container{
     grid-template-columns:1fr; /* يتحول لعمودي */
     text-align:center;

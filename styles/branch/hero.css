@@ -112,9 +112,57 @@
   transform: scale(1.15);
 }
 
-/* Responsive */
+/* -------- RESPONSIVE -------- */
 @media (max-width: 768px) {
-  .hero_title { font-size: 32px; }
-  .hero_subtitle { font-size: 18px; }
-  .hero_text { font-size: 16px; }
+
+  /* ارتفاع الفيديو أقل */
+  .video_hero {
+    height: 60vh; /* بدل 100vh */
+  }
+
+  .hero_video {
+    object-fit: cover;
+  }
+
+  /* Overlay */
+  .video_overlay {
+    background:
+      linear-gradient(180deg, rgba(2,6,23,.5), rgba(2,6,23,.9));
+  }
+
+  /* Shapes أصغر أو مخفية */
+  .shape {
+    width: 80px;
+    height: 80px;
+    opacity: 0.12;
+  }
+
+  /* المحتوى */
+  .hero_content {
+    top: 45%;
+    transform: translateY(-45%);
+    padding: 0 15px;
+  }
+
+  .hero_title { font-size: 28px; }
+  .hero_subtitle { font-size: 16px; }
+  .hero_text { font-size: 14px; line-height: 1.7; max-width: 90%; }
+
+  /* Controls أصغر وأعلى */
+  .video_controls {
+    bottom: 20px;
+    left: 15px;
+  }
+
+  .video_controls button {
+    width: 40px;
+    height: 40px;
+  }
 }
+
+/* إضافي: لو حابة تخفي الفيديو تمامًا على الجوال بدل تقليل حجمه */
+@media (max-width: 480px) {
+  .hero_video { display: none; }
+  .video_overlay { background: #020617; } /* خلفية ثابتة */
+}
+

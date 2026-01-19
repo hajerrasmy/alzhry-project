@@ -1,13 +1,14 @@
 import React from "react";
 import MediaHero from "./MediaHero";
-import ArticlesCards from "./BusinessBlog";
+
+import CreativeCards from "./BusinessBlog";
 
 
 export default function MediaPage() {
   return (
     <div>
       <MediaHero/>
-      <ArticlesCards/>
+      <CreativeCards/>
     </div>
   );
 }

@@ -75,7 +75,6 @@
   font-size: 32px;
   border: none;
   background: none;
-  display: none;
   cursor: pointer;
   color: var(--nav-text);
   transition: transform .3s ease, color .3s ease;
@@ -83,6 +82,9 @@
 .menu_btn:hover {
   transform: scale(1.2);
   color: var(--nav-hover);
+}
+.menu_btn.open {
+  transform: rotate(90deg);
 }
 
 /* ---------- DROPDOWN ---------- */
@@ -105,16 +107,17 @@
   color: var(--nav-hover);
 }
 
-/* تحريك السهم عند الفتح */
 .rotate {
   transform: rotate(180deg);
   transition: transform 0.3s ease;
 }
 
+/* Dropdown Desktop */
 .dropdown {
   position: absolute;
   top: 100%;
-  right: 0;
+  left: 50%; /* توسيط أفقياً */
+  transform: translateX(-50%) translateY(-15px); /* رفع خفيف */
   background: var(--nav-bg);
   display: flex;
   flex-direction: column;
@@ -124,16 +127,17 @@
   overflow: hidden;
   z-index: 1000;
 
+  max-height: 0;
   opacity: 0;
-  transform: translateY(-15px);
   pointer-events: none;
-  transition: all 0.3s ease;
+  transition: max-height 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
 }
 
 .dropdown.active {
+  max-height: 1000px;
   opacity: 1;
-  transform: translateY(0);
   pointer-events: auto;
+  transform: translateX(-50%) translateY(0); /* يظل في النص */
 }
 
 .dropdown a {
@@ -142,9 +146,10 @@
   color: var(--nav-link);
   text-decoration: none;
   border-bottom: 1px solid #eee;
-  transition: all 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
   border-radius: 8px;
+  transition: all 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
+
 .dropdown a:hover {
   background: linear-gradient(90deg, var(--primary), #7aa2ff);
   color: #fff;
@@ -152,31 +157,30 @@
   box-shadow: 0 8px 20px rgba(0,0,0,0.12);
 }
 
-/* ===== Responsive / Sidebar on Mobile ===== */
+/* ===== Responsive / Mobile Sidebar ===== */
 @media(max-width:900px){
   .menu_btn { display: block; }
 
   .nav_links {
-    display: none;
+    flex-direction: column;
     position: fixed;
     top: 0;
     right: -300px;
-    height: 100vh;
     width: 280px;
-    flex-direction: column;
+    height: 100vh;
     background: var(--mobile-bg);
     padding: 60px 20px;
     gap: 20px;
     box-shadow: -5px 0 20px rgba(0,0,0,.1);
-    transition: all .4s ease;
+    transition: right 0.4s ease, opacity 0.4s ease;
     z-index: 9999;
     border-radius: 10px 0 0 10px;
+    opacity: 0;
   }
 
   .nav_links.active {
     right: 0;
-    display: flex;
-    animation: slideSidebar 0.4s ease forwards;
+    opacity: 1;
   }
 
   .nav_links a {
@@ -184,23 +188,31 @@
     text-align: right;
   }
 
-  @keyframes slideSidebar {
-    0% { right: -300px; opacity: 0; }
-    100% { right: 0; opacity: 1; }
+  /* توسيط كلمة فروعنا */
+  .nav_item_dropdown > span {
+    display: flex;
+    justify-content: center; /* توسيط أفقياً */
+    width: 100%; /* تمدد العنصر داخل sidebar */
+    text-align: center; /* نص في الوسط */
   }
 
   .nav_item_dropdown .dropdown {
     position: relative;
     top: 0;
-    right: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    min-width: 200px;
     box-shadow: none;
     border-radius: 0;
-    transform: translateY(0);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .nav_item_dropdown .dropdown.active {
+    max-height: 1000px;
     opacity: 1;
-    pointer-events: auto;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
   }
 
   .dropdown a {
